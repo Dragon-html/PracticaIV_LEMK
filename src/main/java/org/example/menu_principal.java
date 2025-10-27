@@ -36,7 +36,6 @@ public class menu_principal {
 
                 System.out.print("Introduce el ID de la review: ");
                 review.setReviewid(scanner.nextInt());
-                scanner.nextLine(); // limpiar buffer
 
                 System.out.print("Introduce el título del disco: ");
                 review.setTitle(scanner.nextLine());
