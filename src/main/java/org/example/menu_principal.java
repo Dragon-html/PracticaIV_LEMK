@@ -22,9 +22,9 @@ public class menu_principal {
         do{
             System.out.println("1: Agregar");
             System.out.println("2: Mostrar");
-            System.out.println("3: ");
-            System.out.println("4: ");;
-            System.out.println("5:");
+            System.out.println("3: Sacar rock o metal");
+            System.out.println("4: Best new music");;
+            System.out.println("5: Discos, notas máximas y mínimas");
             System.out.println("6: Salir");
 
             opcion = scanner.nextInt();
@@ -66,20 +66,67 @@ public class menu_principal {
                             }
                         }
                     } catch (SQLException e) {
-                        System.out.println("Error al mostrar los datos / " + e.getMessage());
+                        System.out.println("Error al obtener los datos");
                     }
 
                     break;
 
                 case 3:
+
+                    try{
+                        ArrayList<Reviews> lista = dao.RockMetal();
+
+                        if(lista.isEmpty()){
+                            System.out.println("No hay discos de rock ni de metal");
+
+                        }else{
+                            System.out.println("\n Discos Rock y Metal");
+                            for(Reviews r : lista){
+                                System.out.println("Título: " + r.getTitle() + " | Artista: " + r.getArtist() + " | Nota: " + r.getScore() + " | Fecha: " + r.getPub_day() + "/" + r.getPub_month() + "/" + r.getPub_year());                            }
+                        }
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
 
                 case 4:
 
+                    try {
+                        ArrayList<Reviews> lista = dao.bestNewMusic();
+
+                        if (lista.isEmpty()) {
+                            System.out.println("No hay artistas con 'Best New Music'.");
+                        } else {
+                            System.out.println("\nArtistas con 'Best New Music':");
+                            for (Reviews r : lista) {
+                                System.out.println("Título: " + r.getTitle() + " / Artista: " + r.getArtist() + " / Nota: " + r.getScore() + " | Fecha: " + r.getPub_day() + "/" + r.getPub_month() + "/" + r.getPub_year());
+                            }
+                        }
+                    } catch (SQLException e) {
+                        System.out.println("Error al obtener los datos");
+                    }
 
                     break;
 
                 case 5:
+
+                    try {
+
+                        ArrayList<Reviews> lista = dao.discosArtistaMayorMenosNota();
+
+                        if (lista.isEmpty()) {
+                            System.out.println("No hay información disponible de artistas.");
+
+                        }else {
+
+                            System.out.println("\nResumen de discos por artista:");
+                            for (Reviews r : lista) {
+                                System.out.println("Artista: " + r.getArtist() + " | Total discos: " + r.getTotalDiscos() + " | Nota máxima: " + r.getMaxScore() + " | Nota mínima: " + r.getMinScore());
+                            }
+                        }
+                    } catch (SQLException e) {
+                        System.out.println("Ha ocurrido un error al obtener los datos");
+                    }
 
                     break;
 

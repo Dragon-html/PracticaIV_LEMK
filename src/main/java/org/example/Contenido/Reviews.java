@@ -13,10 +13,12 @@ public class Reviews {
     private int pub_month;
     private int pub_year;
 
+    private int totalDiscos;
+    private double maxScore;
+    private double minScore;
 
 
-
-    public Reviews(int reviewid, String title, String artist, String url, double score, boolean best_new_music, String author, String author_type, int pub_month, int pub_day, int pub_year) {
+    public Reviews(int reviewid, String title, String artist, String url, double score, boolean best_new_music, String author, String author_type, int pub_day, int pub_month, int pub_year, int totalDiscos, double maxScore, double minScore) {
         this.reviewid = reviewid;
         this.title = title;
         this.artist = artist;
@@ -25,9 +27,12 @@ public class Reviews {
         this.best_new_music = best_new_music;
         this.author = author;
         this.author_type = author_type;
-        this.pub_month = pub_month;
         this.pub_day = pub_day;
+        this.pub_month = pub_month;
         this.pub_year = pub_year;
+        this.totalDiscos = totalDiscos;
+        this.maxScore = maxScore;
+        this.minScore = minScore;
     }
 
     public Reviews() {
@@ -51,20 +56,20 @@ public class Reviews {
         this.title = title;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public String getArtist() {
         return artist;
     }
 
     public void setArtist(String artist) {
         this.artist = artist;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public double getScore() {
@@ -123,6 +128,30 @@ public class Reviews {
         this.pub_year = pub_year;
     }
 
+    public int getTotalDiscos() {
+        return totalDiscos;
+    }
+
+    public void setTotalDiscos(int totalDiscos) {
+        this.totalDiscos = totalDiscos;
+    }
+
+    public double getMaxScore() {
+        return maxScore;
+    }
+
+    public void setMaxScore(double maxScore) {
+        this.maxScore = maxScore;
+    }
+
+    public double getMinScore() {
+        return minScore;
+    }
+
+    public void setMinScore(double minScore) {
+        this.minScore = minScore;
+    }
+
     @Override
     public String toString() {
         return "Reviews{" +
@@ -137,6 +166,9 @@ public class Reviews {
                 ", pub_day=" + pub_day +
                 ", pub_month=" + pub_month +
                 ", pub_year=" + pub_year +
+                ", totalDiscos=" + totalDiscos +
+                ", maxScore=" + maxScore +
+                ", minScore=" + minScore +
                 '}';
     }
 }
